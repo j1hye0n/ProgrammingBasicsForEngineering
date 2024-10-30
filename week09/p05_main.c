@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
-int all_files;
+/*static*/ int all_files; //static declare can cause error - [Error] ld returned 1 exit status
 
 extern void sub();
 
