@@ -9,8 +9,7 @@ void main(void){
 	if(fp==NULL){
 		printf("file is not opened.\n");
 	}
-	while(fgetc(fp)!=EOF){
-		c=fgetc(fp);
+	while((c=fgetc(fp))!=EOF){
 		putchar(c);
 	}
 	fclose(fp);
