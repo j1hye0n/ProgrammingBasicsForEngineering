@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void main(void){
+/*void main(void){
 	FILE * fp =NULL;
 	char c;
 	
@@ -13,20 +13,19 @@ void main(void){
 		putchar(c);
 	}
 	fclose(fp);
-}
+}*/
 
-/*void main(void){
+void main(void){
 	FILE * fp =NULL;
-	char c;
+	char s[256];
 	
 	fp =fopen("sample.txt","r");
 	if(fp==NULL){
 		printf("file is not opened.\n");
 	}
-	while(fgetc(fp)!=EOF){
-		c=fgetc(fp);
-		putchar(c);
+	while(fgets(s,sizeof(s),fp)!=NULL){
+		puts(s);
 	}
 	fclose(fp);
 }
-*/
+
