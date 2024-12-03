@@ -186,19 +186,19 @@ int main(int argc, const char * argv[]) {
         fflush(stdin);
 // ----- EX. 4 : player ------------
         dieResult = rolldie();
-        player_position[turn]+=dieResult;
         
         //step 2-3. moving
-        if (player_position[turn]> N_BOARD)
+        player_position[turn]+=dieResult;
+        if (player_position[turn]>= N_BOARD)
         {
-        	player_position[turn]=N_BOARD;
+        	player_position[turn]=N_BOARD-1;
 		}
 		printf("player move : %d\n",dieResult);
    
         //step 2-4. coin
-        board_getBoardCoin(player_position[turn]);
-        coinResult += player_coin[turn];
-        if (player_coin[turn]!=0)
+        int coin=board_getBoardCoin(player_position[turn]);
+        player_coin[turn]+=coin;
+        if (coin!=0)
         {
         	printf("player gets coin : %d\n",coinResult);
 		}
@@ -207,6 +207,7 @@ int main(int argc, const char * argv[]) {
         {
         	player_status[turn]=PLAYERSTATUS_END;
 		}
+		turn=(turn+1)%N_PLAYER;
         
     
 // ----- EX. 6 : game end ------------

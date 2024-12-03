@@ -18,7 +18,6 @@ static int board_coin[N_BOARD];
 static int board_status[N_BOARD]; //0 - OK, 1 - destroyed
 // ----- EX. 3 : board ------------
 
-
 static int shark_position;
 
 // ----- EX. 3 : board ------------
@@ -41,7 +40,7 @@ void board_printBoardStatus(void)
 
 int board_initBoard(void)
 {
-    int i;
+    int i, pos=0;
     
     //variable initialization
     for (i=0;i<N_BOARD;i++)
@@ -54,10 +53,10 @@ int board_initBoard(void)
     {
     	while(board_coin[i]==0)
     	{
-    		int coin_pos= rand() % N_COINPOS;
-    		if (board_coin[coin_pos]==0)
+    		pos= rand() % N_COINPOS;
+    		if (board_coin[pos]==0)
     		{
-    			board_coin[coin_pos] = rand() % MAX_COIN+1;
+    			board_coin[pos] = rand() % MAX_COIN+1;
 			}
 		}
 	}
