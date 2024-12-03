@@ -130,7 +130,6 @@ int getWinner(void)
 // ----- EX. 6 : game end ------------
 
 int main(int argc, const char * argv[]) {
-	srand((unsigned int)time(NULL));
     
     int i;
     int turn=0;
@@ -190,31 +189,23 @@ int main(int argc, const char * argv[]) {
         player_position[turn]+=dieResult;
         
         //step 2-3. moving
-        if (player_position[turn]<= N_BOARD)
+        if (player_position[turn]> N_BOARD)
         {
-        	printf("player move : %d\n",player_position[turn]);
+        	player_position[turn]=N_BOARD;
 		}
-		else
-		{
-			printf("player move : %d\n",N_BOARD-dieResult);
-		}
+		printf("player move : %d\n",dieResult);
    
         //step 2-4. coin
         board_getBoardCoin(player_position[turn]);
         coinResult += player_coin[turn];
         if (player_coin[turn]!=0)
         {
-        	printf("player coin : %d\n",coinResult);
+        	printf("player gets coin : %d\n",coinResult);
 		}
         //step 2-5. end process
         if (player_position[turn]==N_BOARD-1)
         {
         	player_status[turn]=PLAYERSTATUS_END;
-		}
-		if (player_status[turn] != PLAYERSTATUS_LIVE)
-		{
-			turn=(turn+1)%N_PLAYER;
-			continue;
 		}
         
     

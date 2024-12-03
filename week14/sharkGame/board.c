@@ -49,11 +49,12 @@ int board_initBoard(void)
         board_status[i] = BOARDSTATUS_OK;
         board_coin[i] = 0;
     }
+    
     for (i=0;i<N_COINPOS;i++)
     {
-    	while(i!=N_COINPOS)
+    	while(board_coin[i]==0)
     	{
-    		int coin_pos= rand() % N_COINPOS+1;
+    		int coin_pos= rand() % N_COINPOS;
     		if (board_coin[coin_pos]==0)
     		{
     			board_coin[coin_pos] = rand() % MAX_COIN+1;
