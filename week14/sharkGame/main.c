@@ -102,7 +102,7 @@ void printPlayerStatus(void)
 }
 // ----- EX. 4 : player ------------
 
-// ----- EX. 5 : shark ------------
+// ----- EX. 5 : shark ------------ 
 void checkDie(void)
 {
     int i;
@@ -120,12 +120,32 @@ void checkDie(void)
 // ----- EX. 6 : game end ------------
 int getAlivePlayer(void)
 {
+	int i;
+	int cnt=0;
+	for (i=0;i<N_PLAYER;i++)
+	{
+		if(player_status[i] == PLAYERSTATUS_END)
+			cnt++;
+	}
+	return cnt;
    
 }
 
 int getWinner(void)
 {
+    int i;
+    int winner=0;
+    int max_coin=-1;
     
+    for (i=0; i<N_PLAYER;i++)
+    {
+    	if(player_coin[i] > max_coin)
+    	{
+    		max_coin =player_coin[i];
+    		winner=i;
+		}
+	}
+	return winner;
 }
 // ----- EX. 6 : game end ------------
 
@@ -208,6 +228,14 @@ int main(int argc, const char * argv[]) {
         	player_status[turn]=PLAYERSTATUS_END;
 		}
 		turn=(turn+1)%N_PLAYER;
+		
+		if (turn==0)
+		{
+			int shark_pos = board_stepShark();
+			printf("Shark moved to %i\n", shark_pos);
+			//check die
+			checkDie();
+		}
         
     
 // ----- EX. 6 : game end ------------
