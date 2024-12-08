@@ -82,7 +82,7 @@ int board_stepShark(void)
 	shark_position += shark_move;
 	for (i=0;i<=shark_position;i++)
 	{
-		board_status[i]=-1;
+		board_status[i]=1;
 	}
 	return shark_move;
 }
